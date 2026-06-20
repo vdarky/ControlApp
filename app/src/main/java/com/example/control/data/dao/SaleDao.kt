@@ -3,7 +3,7 @@ package com.example.control.data.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.control.SaleWithDetails
+import com.example.control.auxiliar.SaleWithDetails
 import com.example.control.data.entity.SaleEntity
 import kotlinx.coroutines.flow.Flow
 

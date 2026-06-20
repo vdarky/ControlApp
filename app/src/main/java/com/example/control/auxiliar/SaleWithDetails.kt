@@ -1,4 +1,4 @@
-package com.example.control
+package com.example.control.auxiliar
 
 data class SaleWithDetails(
     val idSale: Int,
