@@ -21,12 +21,10 @@ class CategoryRepository(
         categoryDao.deleteCategory(category.toEntity())
     }
 
-    // CORREGIDO: Ahora el tipo de retorno es Flow<Category?>
-    suspend fun getCategoryById(id: Int): Flow<Category?> {
+    fun getCategoryById(id: Int): Flow<Category?> {
         return categoryDao.getCategoryById(id).map { it?.toDomain() }
     }
 
-    // CORREGIDO: Ahora el tipo de retorno es Flow<List<Category>>
     fun getAllCategories(): Flow<List<Category>> {
         return categoryDao.getAllCategories().map { entities ->
             entities.map { it.toDomain() }
@@ -34,7 +32,7 @@ class CategoryRepository(
     }
 }
 
-// Funciones de extensión (Mappers) - Están perfectas
+//Mappers
 fun CategoryEntity.toDomain() = Category(idCategory, name, description)
 
 fun Category.toEntity() = CategoryEntity(idCategory, name, description)
