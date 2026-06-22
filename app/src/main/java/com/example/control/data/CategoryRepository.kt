@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 class CategoryRepository(
-    private val categoryDao: CategoryDao // Nota: Cambié "CategoryDao" a minúscula por buenas prácticas
+    private val categoryDao: CategoryDao
 ) {
     suspend fun insertCategory(category: Category){
         categoryDao.insertCategory(category.toEntity())
