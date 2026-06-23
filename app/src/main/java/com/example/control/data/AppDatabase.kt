@@ -34,7 +34,7 @@ import com.example.control.data.entity.UserEntity
     ReviewDetailEntity :: class,
     SaleEntity:: class,
     UserEntity :: class],
-    version = 1,
+    version = 2,
     exportSchema = false)
 abstract class AppDatabase : RoomDatabase(){
 
