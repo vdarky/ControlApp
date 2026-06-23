@@ -7,9 +7,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "product_location")
 data class ProductLocationEntity(
     @PrimaryKey(autoGenerate = true)
-    val idProductLocation : Int,
-    //@ColumnInfo()
-    val idProduct : Int,
-    val idLocation : Int,
-    val quantity : Int
+    val idProductLocation: Int,
+    val idProduct: Int,
+    val idLocation: Int,
+    val locationName: String,
+    val productName: String,
+    val skuCode: String,
+    val quantity: Int
 )

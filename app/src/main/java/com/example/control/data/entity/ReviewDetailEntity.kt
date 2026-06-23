@@ -17,5 +17,8 @@ data class ReviewDetailEntity (
     val systemStock : Int,
     val physicalStock : Int,
     val difference : Int,
-    val note : String
+    val note : String,
+    val productName: String,
+    val skuCode: String,
+    val locationName: String
 )
