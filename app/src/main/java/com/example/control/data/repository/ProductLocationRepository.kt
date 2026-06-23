@@ -1,6 +1,7 @@
 package com.example.control.data.repository
 
 import ProductLocationDao
+import com.example.control.auxiliar.ProductLocationWithDetails
 import com.example.control.data.entity.ProductLocationEntity
 import com.example.control.domain.ProductLocation
 import kotlinx.coroutines.flow.Flow
@@ -51,6 +52,9 @@ class ProductLocationRepository (
     }
 }
 
-// Mappers
-fun ProductLocationEntity.toDomain() = ProductLocation(idProductLocation, idProduct, idLocation, locationName, productName, skuCode, quantity)
-fun ProductLocation.toEntity() = ProductLocationEntity(idProductLocation, idProduct, idLocation,locationName, productName, skuCode, quantity)
+//Mappers
+//  Entity → Domain
+fun ProductLocationEntity.toDomain() = ProductLocation(idProductLocation, idProduct, idLocation, quantity, "", "", "")
+fun ProductLocation.toEntity() = ProductLocationEntity(idProductLocation, idProduct, idLocation, quantity)
+//  Clase auxiliar → Domain
+fun ProductLocationWithDetails.toDomain() = ProductLocation(idProductLocation, idProduct, idLocation, quantity, productName, skuCode, locationName)
