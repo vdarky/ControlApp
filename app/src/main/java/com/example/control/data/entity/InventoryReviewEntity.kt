@@ -20,7 +20,6 @@ import androidx.room.Index
 data class InventoryReviewEntity (
     @PrimaryKey(autoGenerate = true)
     val idReview : Int,
-    //@ForeignKey
     val idUser : Int,
     val startDate : Long,
     val endDate : Long,
