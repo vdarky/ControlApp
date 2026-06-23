@@ -2,9 +2,21 @@ package com.example.control.data.entity
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "product")
+@Entity(
+    tableName = "product",
+    foreignKeys = [
+        ForeignKey(
+            entity = CategoryEntity::class,
+            parentColumns = ["idCategory"],
+            childColumns = ["idCategory"],
+            onDelete = ForeignKey.RESTRICT
+        )
+    ],
+    indices = [Index("idCategory")]
+)
 data class ProductEntity (
     @PrimaryKey(autoGenerate = true)
     val idProduct : Int,
@@ -16,5 +28,5 @@ data class ProductEntity (
     val imageUri : String,
     val minStock : Int,
     val active : Boolean,
-    val createdAt : Int //Revisar este tipo de dato
+    val createdAt : Long
 )
