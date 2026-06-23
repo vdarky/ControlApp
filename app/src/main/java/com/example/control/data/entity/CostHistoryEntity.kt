@@ -14,4 +14,4 @@ data class CostHistoryEntity (
     val costValue : Int, //revisar si mejor float
     val effectiveDate :Long,
     val note : String
-    )
+)
