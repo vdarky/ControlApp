@@ -8,6 +8,6 @@ data class SaleWithDetails(
     val salePrice: Int,
     val saleDate: Int,
     val note: String,
-    val product_name: String,   // alias de p.name
-    val location_name: String   // alias de l.name
+    val productName: String,   // alias de p.name
+    val locationName: String   // alias de l.name
 )

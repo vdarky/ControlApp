@@ -8,8 +8,8 @@ data class ReviewDetailWithInfo (
     val systemStock: Int,
     val physicalStock: Int,
     val difference: Int,
-    val note: String?,
-    val product_name: String,
+    val note: String,
+    val productName: String,
     val skuCode: String,
-    val location_name: String
+    val locationName: String
 )
