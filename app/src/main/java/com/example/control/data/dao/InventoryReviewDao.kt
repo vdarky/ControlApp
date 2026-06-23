@@ -15,12 +15,12 @@ interface InventoryReviewDao {
     @Update
     suspend fun updateReview(review: InventoryReviewEntity)
 
-    @Query("SELECT * FROM InventoryReviewEntity WHERE idReview = :id ")
+    @Query("SELECT * FROM inventory_review WHERE idReview = :id ")
     suspend fun getReviewById(id: Int): InventoryReviewEntity?
 
-    @Query("SELECT * FROM InventoryReviewEntity ORDER BY startDate DESC")
+    @Query("SELECT * FROM inventory_review ORDER BY startDate DESC")
     fun getAllReviews(): Flow<List<InventoryReviewEntity>>
 
-    @Query("SELECT * FROM InventoryReviewEntity WHERE status = :status ORDER BY startDate DESC")
+    @Query("SELECT * FROM inventory_review WHERE status = :status ORDER BY startDate DESC")
     fun getReviewByStatus(status: String): Flow<List<InventoryReviewEntity>>
 }

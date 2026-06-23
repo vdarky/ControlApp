@@ -48,6 +48,34 @@ class SaleRepository(
     }
 }
 //Mappers
-fun SaleEntity.toDomain() = Sale(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note,"","")
-fun Sale.toEntity() = SaleEntity(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note)
-fun SaleWithDetails.toDomain() = Sale(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note, productName, locationName)
+fun SaleEntity.toDomain() = Sale(
+    idSale = idSale,
+    idProduct = idProduct.toLong(),
+    idLocation = idLocation.toLong(),
+    quantity = quantity,
+    salePrice = salePrice.toDouble(),
+    saleDate = saleDate.toInt(),
+    note,""
+    ,""
+)
+fun Sale.toEntity() = SaleEntity(
+    idSale = idSale,
+    idProduct= idProduct.toInt(),
+    idLocation = idLocation.toInt(),
+    quantity = quantity,
+    salePrice =salePrice.toInt(),
+    saleDate = saleDate.toLong(),
+    note = note?:""
+
+)
+fun SaleWithDetails.toDomain() = Sale(
+    idSale = idSale,
+    idProduct = idProduct.toLong(),
+    idLocation = idLocation.toLong(),
+    quantity = quantity,
+    salePrice = salePrice.toDouble(),
+    saleDate = saleDate,
+    note = note?:"",
+    productName,
+    locationName
+)

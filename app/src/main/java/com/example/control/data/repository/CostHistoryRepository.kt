@@ -29,4 +29,4 @@ class CostHistoryRepository(
 
 // Mappers
 fun CostHistoryEntity.toDomain() = CostHistory(idCostHistory, idProduct, costValue, effectiveDate, note)
-fun CostHistory.toEntity() = CostHistoryEntity(idCostHistory, idProduct, costValue, effectiveDate, note)
+fun CostHistory.toEntity() = CostHistoryEntity(idCostHistory, idProduct, costValue, effectiveDate, "")

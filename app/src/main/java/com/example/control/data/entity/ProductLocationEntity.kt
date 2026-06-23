@@ -26,7 +26,7 @@ import androidx.room.Index
 )
 data class ProductLocationEntity(
     @PrimaryKey(autoGenerate = true)
-    val idProductLocation: Int,
+    val idProductLocation: Int =0,
     val idProduct: Int,
     val idLocation: Int,
     //val locationName: String,

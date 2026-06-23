@@ -25,7 +25,7 @@ import androidx.room.Index
 )
 data class SaleEntity (
     @PrimaryKey(autoGenerate = true)
-    val idSale : Int,
+    val idSale : Int =0,
     val idProduct : Int,
     val idLocation : Int,
     val quantity : Int,

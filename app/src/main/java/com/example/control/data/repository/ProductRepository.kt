@@ -5,6 +5,7 @@ import com.example.control.data.entity.ProductEntity
 import com.example.control.domain.Product
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import kotlin.math.min
 
 class ProductRepository (
     private val productDao: ProductDao
@@ -55,5 +56,25 @@ class ProductRepository (
 }
 
 // Mappers
-fun ProductEntity.toDomain() = Product(idProduct, idCategory, name, description, skuCode, imageUri, minStock, active, createdAt)
-fun Product.toEntity() = ProductEntity(idProduct, idCategory, name, description, skuCode, imageUri, minStock, active, createdAt)
+fun ProductEntity.toDomain() = Product(
+    idProduct = idProduct,
+    idCategory = idCategory.toLong(),
+    name = name,
+    description = description,
+    skuCode = skuCode,
+    imageUri = imageUri,
+    minStock = minStock,
+    active = active,
+    createdAt = createdAt.toInt()
+)
+fun Product.toEntity() = ProductEntity(
+    idProduct = idProduct,
+    idCategory = idCategory.toInt(),
+    name = name,
+    description = description?:"",
+    skuCode = skuCode,
+    imageUri = imageUri?:"",
+    minStock = minStock,
+    active = active,
+    createdAt= createdAt.toLong()
+)

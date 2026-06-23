@@ -19,8 +19,7 @@ import androidx.room.PrimaryKey
 )
 data class ProductEntity (
     @PrimaryKey(autoGenerate = true)
-    val idProduct : Int,
-    //@ForeignKey
+    val idProduct : Int =0,
     val idCategory : Int,
     val name : String,
     val description : String,

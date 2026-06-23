@@ -31,7 +31,7 @@ import androidx.room.Index
     )
 data class ReviewDetailEntity (
     @PrimaryKey(autoGenerate = true)
-    val idDetail : Int,
+    val idDetail : Int =0,
     //@ForeignKey
     val idReview : Int,
     //@ForeignKey

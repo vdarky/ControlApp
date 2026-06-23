@@ -41,5 +41,19 @@ class InventoryReviewRepository(
 }
 
 // Mappers
-fun InventoryReviewEntity.toDomain() = InventoryReview(idReview, idUser, startDate, endDate, status, notes)
-fun InventoryReview.toEntity() = InventoryReviewEntity(idReview, idUser, startDate, endDate, status, notes)
+fun InventoryReviewEntity.toDomain() = InventoryReview(
+    idReview,
+    idUser,
+    startDate.toInt(),
+    endDate.toInt(),
+    status,
+    notes
+)
+fun InventoryReview.toEntity() = InventoryReviewEntity(
+    idReview =idReview,
+    idUser = idUser,
+    startDate= startDate.toLong(),
+    endDate = endDate.toLong(),
+    status = status,
+    notes = notes?: ""
+)
