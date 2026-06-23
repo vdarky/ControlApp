@@ -1,0 +1,53 @@
+package com.example.control.data.repository
+
+import com.example.control.auxiliar.SaleWithDetails
+import com.example.control.data.dao.SaleDao
+import com.example.control.data.entity.SaleEntity
+import com.example.control.domain.Sale
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+class SaleRepository(
+    private val saleDao : SaleDao
+){
+    //Insert
+    suspend fun insertSale(sale: Sale){
+        saleDao.insertSale(sale.toEntity())
+    }
+    //Query
+    fun getAllSales(): Flow<List<Sale>> {
+        return saleDao.getAllSales().map{
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+    //Query
+    fun getSalesByProduct(productId: Int): Flow<List<Sale>>{
+        return saleDao.getSalesByProduct(productId).map{
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+    //Query
+    fun getSalesByLocation(locationId: Int): Flow<List<Sale>>{
+        return saleDao.getSalesByLocation(locationId).map{
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+    //Query
+    fun getSalesByDateRange(start: Int, end: Int): Flow<List<Sale>>{
+        return saleDao.getSalesByDateRange(start, end).map{
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+}
+//Mappers
+fun SaleEntity.toDomain() = Sale(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note,"","")
+fun Sale.toEntity() = SaleEntity(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note)
+fun SaleWithDetails.toDomain() = Sale(idSale, idProduct, idLocation, quantity, salePrice, saleDate, note, productName, locationName)
