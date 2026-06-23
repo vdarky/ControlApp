@@ -33,18 +33,18 @@ interface ProductLocationDao {
     suspend fun getQuantityAtLocation(productId: Int, locationId: Int): Int
 
     @Query("""
-        SELECT pl.*, l.name AS location_name 
-        FROM product_location pl 
-        INNER JOIN location l ON pl.idLocation = l.idLocation 
-        WHERE pl.idProduct = :productId
-    """)
-    fun getStockDetailsByProduct(productId: Int): Flow<List<ProductLocationWithLocation>>
-
+    SELECT pl.*, l.name AS location_name 
+    FROM product_location pl 
+    INNER JOIN location l ON pl.idLocation = l.idLocation 
+    WHERE pl.idProduct = :productId
+""")
+    fun getStockDetailsByProduct(productId: Int): Flow<List<ProductLocationEntity>>
     @Query("""
         SELECT pl.*, p.name AS product_name, p.skuCode 
         FROM product_location pl 
         INNER JOIN product p ON pl.idProduct = p.idProduct 
         WHERE pl.idLocation = :locationId AND p.active = 1
     """)
-    fun getStockDetailsByLocation(locationId: Int): Flow<List<ProductLocationWithProduct>>
+    fun getStockDetailsByLocation(locationId: Int): Flow<List<ProductLocationEntity>>
+
 }

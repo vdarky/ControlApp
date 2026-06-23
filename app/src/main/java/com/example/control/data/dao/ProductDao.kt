@@ -21,6 +21,9 @@ interface ProductDao {
     @Query("SELECT * FROM product WHERE idProduct = :id")
     suspend fun getProductById(id: Int): ProductEntity?
 
+    @Query("SELECT * FROM product WHERE skuCode = :sku LIMIT 1")
+    suspend fun getProductBySku(sku: String): ProductEntity?
+
     @Query("SELECT * FROM product WHERE active = 1 ORDER BY name ASC")
     fun getActiveProducts(): Flow<List<ProductEntity>>
 
@@ -29,10 +32,6 @@ interface ProductDao {
 
     @Query("SELECT * FROM product WHERE (name LIKE '%' || :query || '%' OR description LIKE '%' || :query || '%')AND active = 1")
     fun searchProducts(query: String): Flow<List<ProductEntity>>
-
-    @Query("SELECT * FROM product WHERE skuCode = :sku LIMIT 1")
-    suspend fun getProductBySku(sku: String): ProductEntity?
-
 
 
 }

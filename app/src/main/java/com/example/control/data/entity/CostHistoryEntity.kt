@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "cost_history")
 data class CostHistoryEntity (
     @PrimaryKey(autoGenerate = true)
-    val idCostHistory : Int,
+    val idCostHistory : Int = 0,
     //@ForeignKey
     val idProduct : Int,
     val costValue : Int, //revisar si mejor float

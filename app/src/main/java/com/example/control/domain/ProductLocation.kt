@@ -4,5 +4,9 @@ data class ProductLocation(
     val idProductLocation : Int,
     val idProduct : Int,
     val idLocation : Int,
-    val quantity : Int
+    val locationName: String,
+    val productName: String,
+    val skuCode: String,
+    val quantity : Int,
+
 )

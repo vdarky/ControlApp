@@ -13,7 +13,7 @@ interface InventoryReviewDao {
     suspend fun insertReview(review: InventoryReviewEntity): Long
 
     @Update
-    suspend fun updateReview(review: InventoryReviewDao)
+    suspend fun updateReview(review: InventoryReviewEntity)
 
     @Query("SELECT * FROM InventoryReviewEntity WHERE idReview = :id ")
     suspend fun getReviewById(id: Int): InventoryReviewEntity?
