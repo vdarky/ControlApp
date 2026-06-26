@@ -1,9 +1,9 @@
-package com.example.control.ui.theme.viewModel
+package com.example.control.ui.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.control.data.repository.CategoryRepository
-import com.example.control.domain.Category
+import com.example.control.model.domain.Category
+import com.example.control.model.repository.CategoryRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
