@@ -1,0 +1,59 @@
+package com.example.control.model.repository
+
+import com.example.control.model.dao.InventoryReviewDao
+import com.example.control.model.entity.InventoryReviewEntity
+import com.example.control.model.domain.InventoryReview
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+
+class InventoryReviewRepository(
+    private val inventoryReviewDao: InventoryReviewDao
+){
+    // Insert
+    suspend fun insertReview(inventory: InventoryReview){
+        inventoryReviewDao.insertReview(inventory.toEntity())
+    }
+    //Update
+    suspend fun updateReview(inventory: InventoryReview){
+        inventoryReviewDao.updateReview(inventory.toEntity())
+    }
+    //Query
+    suspend fun getReviewById(id : Int): InventoryReview?{
+        return inventoryReviewDao.getReviewById(id)?.toDomain()
+    }
+    //Query
+    fun getAllReviews(): Flow<List<InventoryReview>>{
+        return inventoryReviewDao.getAllReviews().map {
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+    //Query
+    fun getReviewByStatus(status: String): Flow<List<InventoryReview>>{
+        return inventoryReviewDao.getReviewByStatus(status).map{
+            entities -> entities.map{
+                it.toDomain()
+            }
+        }
+    }
+
+}
+
+// Mappers
+fun InventoryReviewEntity.toDomain() = InventoryReview(
+    idReview,
+    idUser,
+    startDate.toInt(),
+    endDate.toInt(),
+    status,
+    notes
+)
+fun InventoryReview.toEntity() = InventoryReviewEntity(
+    idReview =idReview,
+    idUser = idUser,
+    startDate= startDate.toLong(),
+    endDate = endDate.toLong(),
+    status = status,
+    notes = notes?: ""
+)
